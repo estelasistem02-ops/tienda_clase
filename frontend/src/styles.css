@@ -1,0 +1,181 @@
+:root {
+  --azul: #3b82f6;
+  --azul-oscuro: #2563eb;
+  --rojo: #ef4444;
+  --rojo-oscuro: #dc2626;
+  --gris-borde: #d1d5db;
+  --gris-fondo: #f3f4f6;
+  --texto: #1f2937;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--gris-fondo);
+  color: var(--texto);
+}
+
+h2 {
+  margin-top: 0;
+}
+
+/* Formulario */
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+  background: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin: 0 0 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  float: left;
+  width: 100%;
+}
+
+input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--gris-borde);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* Botones */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--azul);
+  color: rgb(255, 255, 255);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--azul-oscuro);
+}
+
+button:disabled {
+  background: var(--gris-borde);
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+th {
+  text-align: left;
+  background: var(--texto);
+  color: white;
+  padding: 0.75rem 1rem;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--gris-fondo);
+}
+
+tr:hover td {
+  background: #f9fafb;
+}
+
+td button {
+  margin-right: 0.4rem;
+}
+
+/* El último botón de cada fila (Eliminar) en rojo */
+td button:last-child {
+  background: var(--rojo);
+  margin-right: 0;
+}
+
+td button:last-child:hover {
+  background: var(--rojo-oscuro);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.botones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button.secundario {
+  background: #e5e7eb;
+  color: var(--texto);
+}
+
+button.secundario:hover:not(:disabled) {
+  background: var(--gris-borde);
+}
+
+/*responsivo m[ovil*/
+@media (max-width: 600px) {
+  fieldset {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campo input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .botones button {
+    flex: 1;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  th,
+  td {
+    padding: 0.6rem 0.75rem;
+  }
+
+  /* NUEVO: botones de la tabla uno sobre otro */
+  td button {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.35rem;
+  }
+
+  td button:last-child {
+    margin-bottom: 0;
+  }
+}

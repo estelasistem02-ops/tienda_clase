@@ -1,0 +1,22 @@
+<section class="login">
+  <h2>Iniciar sesión</h2>
+  <p class="subtitulo">Ingresa tus credenciales para administrar la tienda.</p>
+
+  <form #formLogin="ngForm" (ngSubmit)="entrar()">
+    <div class="campo">
+      <label for="loginCorreo">Correo</label>
+      <input id="loginCorreo" name="correo" type="email" [(ngModel)]="correo" required email />
+    </div>
+
+    <div class="campo">
+      <label for="loginPassword">Contraseña</label>
+      <input id="loginPassword" name="password" type="password" [(ngModel)]="password" required />
+    </div>
+
+    <p class="error" role="alert">{{ error() }}</p>
+
+    <button type="submit" [disabled]="formLogin.invalid || cargando()">
+      {{ cargando() ? 'Entrando...' : 'Entrar' }}
+    </button>
+  </form>
+</section>

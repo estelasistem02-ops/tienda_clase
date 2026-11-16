@@ -1,0 +1,91 @@
+:host {
+  --color-fondo: #1f2937;
+  --color-texto: #486084;
+  --color-acento: #3b82f6;
+}
+
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  background: var(--color-fondo);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.marca {
+  color: rgb(164, 187, 208);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.menu {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu a {
+  color: #d1d5db;
+  text-decoration: none;
+  padding: 1rem 1rem;
+  border-bottom: 3px solid transparent;
+  transition:
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.menu a:hover {
+  color: white;
+}
+
+.menu a.activo {
+  color: white;
+  border-bottom-color: var(--color-acento);
+}
+
+main {
+  padding: 1.5rem;
+}
+
+.menu .salir {
+  background: transparent;
+  color: var(--color-texto);
+  border: 1px solid #4b5563;
+  align-self: center;
+  margin-left: 0.5rem;
+}
+
+.menu .salir:hover {
+  background: #374151;
+  color: white;
+}
+
+
+@media (max-width: 600px) {
+  .barra {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem 0;
+  }
+
+  .marca {
+    margin-bottom: 0.25rem;
+  }
+
+  .menu {
+    width: 100%;
+  }
+
+  .menu a {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}

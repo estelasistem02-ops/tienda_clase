@@ -1,0 +1,13 @@
+<header class="barra">
+  <span class="marca">Administración de tienda</span>
+
+  <nav class="menu">
+    <a routerLink="/usuarios" routerLinkActive="activo">Usuarios</a>
+    <a routerLink="/productos" routerLinkActive="activo">Productos</a>
+    <button type="button" class="salir" (click)="cerrarSesion()">Cerrar sesión</button>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

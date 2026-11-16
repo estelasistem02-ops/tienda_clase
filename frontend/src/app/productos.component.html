@@ -1,0 +1,88 @@
+<section>
+  <h2>Gestión de productos</h2>
+
+  <form #formProducto="ngForm" (ngSubmit)="guardar()">
+    <fieldset [disabled]="guardando()">
+      <legend>
+        {{ guardando() ? 'Guardando...' : idEdicion ? 'Actualizar' : 'Registrar producto' }}
+      </legend>
+
+      <div class="campo">
+        <label for="productoNombre">Nombre</label>
+        <input id="productoNombre" name="nombre" [(ngModel)]="formulario.nombre" required />
+      </div>
+
+      <div class="campo">
+        <label for="productoPrecio">Precio</label>
+        <!-- type="number" permite trabajar con valores numéricos. -->
+        <input
+          id="productoPrecio"
+          name="precio"
+          type="number"
+          min="0"
+          step="0.01"
+          [(ngModel)]="formulario.precio"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="productoExistencia">Existencia</label>
+
+        <input
+          id="productoExistencia"
+          name="existencia"
+          type="number"
+          min="0"
+          step="1"
+          [(ngModel)]="formulario.existencia"
+          required
+        />
+      </div>
+
+      <div class="botones">
+        <button type="submit" [disabled]="formProducto.invalid">
+          {{ guardando() ? 'Guardando...' : idEdicion ? 'Actualizar' : 'Registrar' }}
+        </button>
+
+        <button type="button" class="secundario" (click)="cancelar()">Cancelar</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <p role="status">{{ mensaje() }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio (Q)</th>
+        <th>Existencia</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (producto of productos(); track producto._id) {
+        <tr>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.precio | number: '1.2-2' }}</td>
+          <td>{{ producto.existencia }}</td>
+          <td>
+            <button type="button" [disabled]="guardando()" (click)="editar(producto)">
+              Editar
+            </button>
+
+            <button type="button" [disabled]="guardando()" (click)="eliminar(producto)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4">No hay productos registrados.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
