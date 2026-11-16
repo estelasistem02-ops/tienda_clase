@@ -1,6 +1,9 @@
 const { MongoClient } = require("mongodb");
 const bcrypt = require("bcrypt");
 
+const CORREO_ADMIN = process.argv[2];
+const PASSWORD_ADMIN = process.argv[3];
+
 if (!CORREO_ADMIN || !PASSWORD_ADMIN) {
   console.log("Uso: node admins.js correo clave");
   process.exit(1);
